@@ -16,10 +16,10 @@ class myTqdm(tqdm):
         super().__init__(total=total,  unit="B", unit_scale=True)
 
 
-client = Client(Account("xxxxxxxxxxx@gmail.com", "xxxxxxx"))
+client = Client(Account("xxxxxxx@gmail.com", "password"))
 client.progress = myTqdm  # init(total) , update(size) , close()
 
-video = client.video("xxxxxxxxxxxxx")  # == Video(id , client)
+video = client.video("video id")  # == Video(id , client)
 for user_video in video.user:  # user_video:Video , video.user:User
     for file in user_video.files:
         if file.name == "Source":
