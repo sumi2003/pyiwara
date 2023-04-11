@@ -1,18 +1,20 @@
-from pyiwara import Account, Client, Video, User
-from tqdm import tqdm
+from pyiwara import Account, Client
+from pathlib import Path
 
 
-class myTqdm(tqdm):
-    def __init__(self, total):
-        super().__init__(total=total,  unit="B", unit_scale=True)
+account = Account('username', 'password')
+client = Client(account)
+
+video = client.video("video_id") #Video object
+print(video.title)
+
+file = video.files[360] #File object
+path = Path(f"{video.title}.{file.ext}")
+file.download(path)
 
 
-client = Client(Account("xxxxxxxxxxx@gmail.com", "xxxxxxx"))
-client.progress = myTqdm  # init(total) , update(size) , close()
 
-video = client.video("xxxxxxxxxxxxx")  # == Video(id , client)
-for user_video in video.user:  # user_video:Video , video.user:User
-    for file in user_video.files:
-        if file.name == "Source":
-            path = user_video.title + file.ext
-            file.download(path)
+
+
+
+
