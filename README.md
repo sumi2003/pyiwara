@@ -4,7 +4,7 @@ iwaraから動画やユーザーデータを取得しダウンロードします
 Download videos and get user data from iwara.
 
 
-##　sample
+## sample
 
 ```python
 from pyiwara import Account, Client
